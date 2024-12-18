@@ -1,4 +1,4 @@
-import { TextInputProps, TouchableOpacityProps } from "react-native";
+import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
 declare interface Driver {
   id: number;
@@ -55,8 +55,8 @@ declare interface Ride {
 
 declare interface ButtonProps extends TouchableOpacityProps {
   title: string;
-  bgVariant?: "primary" | "secondary" | "danger" | "outline" | "success";
-  textVariant?: "primary" | "default" | "secondary" | "danger" | "success";
+  bgVariant?: 'primary' | 'secondary' | 'danger' | 'outline' | 'success';
+  textVariant?: 'primary' | 'default' | 'secondary' | 'danger' | 'success';
   IconLeft?: React.ComponentType<any>;
   IconRight?: React.ComponentType<any>;
   className?: string;
@@ -138,11 +138,18 @@ declare interface DriverCardProps {
   setSelected: () => void;
 }
 
-declare type FormKeys = "name" | "email" | "password";
+declare type SignUpFormKeys = 'name' | 'email' | 'password';
+declare type SignInFormKeys = 'email' | 'password';
 
 declare interface Field {
   label: string;
   placeholder: string;
   icon: string;
-  textContentType: "name" | "emailAddress" | "password";
+  textContentType: 'name' | 'emailAddress' | 'password';
+}
+
+export interface CustomError {
+  errors: {
+    message: string;
+  }[];
 }

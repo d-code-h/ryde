@@ -2,24 +2,45 @@ import CustomButton from '@/components/CustomButton';
 import InputField from '@/components/InputField';
 import OAuth from '@/components/OAuth';
 import { fields, images } from '@/constants';
-import { FormKeys } from '@/types/type';
-import { Link } from 'expo-router';
-import { useState } from 'react';
+import { SignInFormKeys } from '@/types/type';
+import { useSignIn } from '@clerk/clerk-expo';
+import { Link, router } from 'expo-router';
+import { useCallback, useState } from 'react';
 import { View, Text, ScrollView, Image } from 'react-native';
 
 const SignIn = () => {
-  const [showSuccessModal, setSuccessModal] = useState(false);
-  const [form, setForm] = useState<Record<FormKeys, string>>({
-    name: '',
+  const [form, setForm] = useState<Record<SignInFormKeys, string>>({
     email: '',
     password: '',
   });
 
-  const [verification, setVerification] = useState({
-    state: 'default',
-    error: '',
-    code: '',
-  });
+  const { signIn, setActive, isLoaded } = useSignIn();
+
+  // Handle the submission of the sign-in form
+  const onSignInPress = useCallback(async () => {
+    if (!isLoaded) return;
+
+    // Start the sign-in process using the email and password provided
+    try {
+      const signInAttempt = await signIn.create({
+        identifier: form.email,
+        password: form.password,
+      });
+
+      // If sign-in process is complete, set the created session as active
+      // and redirect the user
+      if (signInAttempt.status === 'complete') {
+        await setActive({ session: signInAttempt.createdSessionId });
+        router.replace('/(root)/(tabs)/home');
+      } else {
+        // If the status isn't complete, check why. User might need to
+        // complete further steps.
+        console.error(JSON.stringify(signInAttempt, null, 2));
+      }
+    } catch (err) {
+      console.error(JSON.stringify(err, null, 2));
+    }
+  }, [isLoaded, form]);
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -40,7 +61,7 @@ const SignIn = () => {
                 placeholder={placeholder}
                 icon={icon}
                 textContentType={textContentType}
-                value={form[`${label.toLowerCase()}` as FormKeys]}
+                value={form[`${label.toLowerCase()}` as SignInFormKeys]}
                 secureTextEntry={label.toLowerCase() === 'password'}
                 onChangeText={(value) =>
                   setForm({ ...form, [label.toLowerCase()]: value })
@@ -48,7 +69,11 @@ const SignIn = () => {
               />
             ))}
 
-          <CustomButton title="Sign In" className="mt-6" />
+          <CustomButton
+            title="Sign In"
+            className="mt-6"
+            onPress={onSignInPress}
+          />
 
           <OAuth />
 
