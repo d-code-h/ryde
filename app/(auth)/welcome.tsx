@@ -18,7 +18,7 @@ const Home = () => {
     <SafeAreaView className="flex h-full items-center justify-between bg-white">
       {/* Top right Skip button */}
       <TouchableOpacity
-        onPress={() => router.replace('/(auth)/sign-up')}
+        onPress={() => router.replace('/(auth)/on-board')}
         className="w-fit ml-auto flex justify-end items-end p-5"
       >
         <Text className="text-black text-md font-JakartaBold">Skip</Text>
@@ -61,7 +61,7 @@ const Home = () => {
         title={isLastSlide ? 'Get Started' : 'Next'}
         onPress={() =>
           isLastSlide
-            ? router.replace('/(auth)/sign-up')
+            ? router.replace('/(auth)/on-board')
             : swiperRef.current?.scrollBy(1)
         }
         className="w-11/12 mt-10 mb-5"
