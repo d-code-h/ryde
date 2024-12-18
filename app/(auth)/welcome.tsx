@@ -42,13 +42,16 @@ const Home = () => {
             <Image
               source={item.image}
               className="w-full h-[300px]"
-              resizeMode="contain"
+              resizeMode="cover"
             />
             <View className="flex flex-row items-center justify-center w-full mt-10">
-              <Text className="text-md font-JakartaSemiBold text-center text-[#858585] mx-10 mt-3">
-                {item.description}
+              <Text className="text-black text-3xl font-bold mx-10 text-center">
+                {item.title}
               </Text>
             </View>
+            <Text className="text-md font-JakartaSemiBold text-center text-[#858585] mx-10 mt-3">
+              {item.description}
+            </Text>
           </View>
         ))}
       </Swiper>
