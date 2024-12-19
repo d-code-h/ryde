@@ -40,7 +40,7 @@ const SignIn = () => {
     } catch (err) {
       console.error(JSON.stringify(err, null, 2));
     }
-  }, [isLoaded, form]);
+  }, [isLoaded, form.email, form.password, setActive, signIn]);
 
   return (
     <ScrollView className="flex-1 bg-white">
