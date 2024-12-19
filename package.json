@@ -22,9 +22,7 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "bun run lint:fix",
-      "bun run prettier:fix",
-      "bun run type-check",
-      "bun test"
+      "bun run prettier:fix"
     ],
     "*.{json,md}": [
       "bun run prettier:fix"

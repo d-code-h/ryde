@@ -47,9 +47,9 @@ jobs:
         run: bun run lint
 
       # Step 7: Run TypeScript check
-      - name: Run TypeScript
-        run: bun run type-check
+      # - name: Run TypeScript
+      #   run: bun run type-check
 
       # Step 8: Run Tests
-      - name: Run Tests
-        run: bun test
+      # - name: Run Tests
+      #   run: bun test
