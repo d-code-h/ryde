@@ -51,5 +51,5 @@ jobs:
       #   run: bun run type-check
 
       # Step 8: Run Tests
-      # - name: Run Tests
-      #   run: bun test
+      - name: Run Tests
+        run: bun test

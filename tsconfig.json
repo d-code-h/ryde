@@ -5,16 +5,10 @@
       "@/*": ["./*"]
     },
     "skipLibCheck": true,
-    "jsx": "react-native"
+    "jsx": "react-native",
+    "allowJs": false
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts",
-    "babel.config.js",
-    "nativewind-env.d.ts"
-  ],
-  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx", "babel.config.js", "metro.config.js"],
+  "exclude": ["node_modules", "babel.config.ts", "metro.config.ts"],
   "extends": "expo/tsconfig.base"
 }

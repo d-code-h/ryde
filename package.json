@@ -3,12 +3,12 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "bunx expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watchAll",
+    "test": "jest",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix '**/*.{js,jsx,ts,tsx}'",
     "prettier:check": "prettier --check '**/*.{js,jsx,ts,tsx,json}'",
@@ -22,7 +22,8 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "bun run lint:fix",
-      "bun run prettier:fix"
+      "bun run prettier:fix",
+      "bun run test"
     ],
     "*.{json,md}": [
       "bun run prettier:fix"
@@ -31,6 +32,7 @@
   "dependencies": {
     "@clerk/clerk-expo": "^2.6.4",
     "@expo/vector-icons": "^14.0.4",
+    "@neondatabase/serverless": "^0.10.4",
     "@react-navigation/bottom-tabs": "^7.0.0",
     "@react-navigation/native": "^7.0.0",
     "clsx": "^2.1.1",
@@ -67,6 +69,7 @@
     "@testing-library/react-native": "^12.9.0",
     "@types/jest": "^29.5.14",
     "@types/react": "~18.3.17",
+    "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^8.57.0",
     "eslint-config-expo": "~8.0.1",
     "eslint-config-prettier": "^9.1.0",
