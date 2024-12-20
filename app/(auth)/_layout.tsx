@@ -1,10 +1,19 @@
-import { Text, View } from 'react-native';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 
 const Layout = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    //  Auth routers
+    <>
+      <Stack>
+        <Stack.Screen name="welcome" options={{ headerShown: false }} />
+        <Stack.Screen name="on-board" options={{ headerShown: false }} />
+        <Stack.Screen name="sign-up" options={{ headerShown: false }} />
+        <Stack.Screen name="sign-in" options={{ headerShown: false }} />
+      </Stack>
+      <StatusBar style="dark" />
+    </>
   );
 };
 
